@@ -15,8 +15,9 @@ This is a simple Telegram bot written in TypeScript and Node.js. The bot is desi
 
 1. Clone the repository.
 2. Run `npm install` to install the dependencies.
-3. Create a `.env` file in the root directory and add your Telegram API token like this: `TELEGRAM_TOKEN=your_token_here`.
-4. Run `npm start` to start the bot.
+3. Create a `.env` file in the root directory and add your Telegram API token like this: `BOT_TOKEN=your_token_here`.
+4. Run `docker-compose up -d` to start the telegram-bot-api server.
+5. Run `npm start` to start the bot.
 
 ## Usage
 
