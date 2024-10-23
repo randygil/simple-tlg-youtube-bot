@@ -41,10 +41,10 @@ export class YoutubeService {
             cookies: "./cookies.txt",
             userAgent:
               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-          },
-          {
-            stdio: "inherit",
           }
+          // {
+          //   stdio: "inherit",
+          // }
         );
       } else {
         console.log("file already exists");
