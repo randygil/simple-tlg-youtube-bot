@@ -36,6 +36,7 @@ export class YoutubeService {
           {
             format: "137",
             output: filepath,
+            cookies: "./cookies.txt",
           },
           {
             stdio: "inherit",
