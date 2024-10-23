@@ -34,9 +34,11 @@ export class YoutubeService {
         await youtubeDl(
           youtubeLink,
           {
-            format: "137",
+            format: "22",
             output: filepath,
             cookies: "./cookies.txt",
+            userAgent:
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
           },
           {
             stdio: "inherit",
