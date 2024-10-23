@@ -31,10 +31,16 @@ export class YoutubeService {
         .catch(() => false);
 
       if (!exists) {
-        await youtubeDl(youtubeLink, {
-          format: "137",
-          output: filepath,
-        });
+        await youtubeDl(
+          youtubeLink,
+          {
+            format: "137",
+            output: filepath,
+          },
+          {
+            stdio: "inherit",
+          }
+        );
       } else {
         console.log("file already exists");
       }
