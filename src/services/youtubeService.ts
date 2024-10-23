@@ -46,6 +46,7 @@ export class YoutubeService {
           //   stdio: "inherit",
           // }
         );
+        console.log("file downloaded");
       } else {
         console.log("file already exists");
       }
