@@ -13,7 +13,7 @@ class Config {
   }
 
   get videoFormat(): string {
-    return this.getEnv("VIDEO_FORMAT");
+    return this.getEnv("VIDEO_FORMAT") ?? "";
   }
 
   private getEnv(key: string) {
