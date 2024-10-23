@@ -9,6 +9,7 @@ const TEMP_DIR = "/tmp";
 export class YoutubeService {
   private readonly YOUTUBE_LINK_REGEX =
     /^(?:(?:https|http):\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be).*?(?:\/|v\/|u\/|embed\/|shorts\/|watch\?v=|(?<username>user\/))(?<id>[\w\-]{11})(?:\?|&|$)/;
+
   public validateYoutubeLink(youtubeLink: string): string | null {
     const match = youtubeLink.match(this.YOUTUBE_LINK_REGEX);
     if (match?.groups?.username || !match?.groups?.id) {
@@ -21,20 +22,25 @@ export class YoutubeService {
     console.log(`Processing youtube link: ${youtubeLink}`);
 
     const filepath = `${TEMP_DIR}/${youtubeLink}.mp4`;
+    console.log(`Filepath: ${filepath}`);
 
-    const exists = await fs
-      .access(filepath)
-      .then(() => true)
-      .catch(() => false);
-    if (!exists) {
-      await youtubeDl(youtubeLink, {
-        format: "137",
-        output: filepath,
-      });
+    try {
+      const exists = await fs
+        .access(filepath)
+        .then(() => true)
+        .catch(() => false);
 
-      filepath;
-    } else {
-      console.log("file already exists");
+      if (!exists) {
+        await youtubeDl(youtubeLink, {
+          format: "137",
+          output: filepath,
+        });
+      } else {
+        console.log("file already exists");
+      }
+    } catch (error) {
+      console.error("Error processing YouTube link:", error);
+      throw new Error("An error occurred while processing the YouTube link.");
     }
 
     return filepath;

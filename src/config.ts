@@ -8,6 +8,9 @@ class Config {
   get telegramApiURL(): string {
     return this.getEnv("TELEGRAM_API_URL") ?? "";
   }
+  get deleteVideos(): boolean {
+    return Boolean(process.env.DELETE_VIDEOS_INMEDIATLY);
+  }
 
   private getEnv(key: string) {
     if (!process.env[key]) {
