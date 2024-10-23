@@ -9,7 +9,7 @@ class Config {
     return this.getEnv("TELEGRAM_API_URL") ?? "";
   }
   get deleteVideos(): boolean {
-    return Boolean(process.env.DELETE_VIDEOS_INMEDIATLY);
+    return Boolean(this.getEnv("DELETE_VIDEOS_INMEDIATLY"));
   }
 
   get videoFormat(): string {

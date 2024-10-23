@@ -32,20 +32,13 @@ export class YoutubeService {
         .catch(() => false);
 
       if (!exists) {
-        await youtubeDl(
-          youtubeLink,
-          {
-            format:
-              config.videoFormat ?? "bestvideo[height<=720]+bestaudio/best",
-            output: filepath,
-            cookies: "./cookies.txt",
-            userAgent:
-              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-          }
-          // {
-          //   stdio: "inherit",
-          // }
-        );
+        await youtubeDl(youtubeLink, {
+          format: config.videoFormat ?? "bestvideo[height<=720]+bestaudio/best",
+          output: filepath,
+          cookies: "./cookies.txt",
+          userAgent:
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        });
         console.log("file downloaded");
       } else {
         console.log("file already exists");
