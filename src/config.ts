@@ -12,6 +12,10 @@ class Config {
     return Boolean(process.env.DELETE_VIDEOS_INMEDIATLY);
   }
 
+  get videoFormat(): string {
+    return this.getEnv("VIDEO_FORMAT");
+  }
+
   private getEnv(key: string) {
     if (!process.env[key]) {
       throw new Error(`Environment variable ${key} is not set`);

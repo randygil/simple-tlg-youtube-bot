@@ -1,5 +1,6 @@
 import youtubeDl from "youtube-dl-exec";
 import fs from "fs/promises";
+import { config } from "../config";
 const DEFAULT_CONFIG = {
   quality: "1080",
 };
@@ -34,7 +35,8 @@ export class YoutubeService {
         await youtubeDl(
           youtubeLink,
           {
-            format: "22",
+            format:
+              config.videoFormat ?? "bestvideo[height<=720]+bestaudio/best",
             output: filepath,
             cookies: "./cookies.txt",
             userAgent:
